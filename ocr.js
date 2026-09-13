@@ -1,4 +1,4 @@
-```javascript
+
 var ocrDemo = {
     CANVAS_WIDTH: 200,
     TRANSLATED_WIDTH: 20,
@@ -229,4 +229,3 @@ var ocrDemo = {
         this.drawGrid(ctx);
     }
 };
-```
