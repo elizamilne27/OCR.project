@@ -1,3 +1,4 @@
+```javascript
 var ocrDemo = {
     CANVAS_WIDTH: 200,
     TRANSLATED_WIDTH: 20,
@@ -178,5 +179,54 @@ var ocrDemo = {
         );
 
         xmlHttp.send(msg);
+    },
+
+    onLoadFunction: function() {
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+
+        canvas.isDrawing = false;
+
+        this.drawGrid(ctx);
+
+        canvas.addEventListener(
+            "mousedown",
+            function(e) {
+                this.onMouseDown(e, ctx, canvas);
+            }.bind(this)
+        );
+
+        canvas.addEventListener(
+            "mousemove",
+            function(e) {
+                this.onMouseMove(e, ctx, canvas);
+            }.bind(this)
+        );
+
+        canvas.addEventListener(
+            "mouseup",
+            function(e) {
+                this.onMouseUp(e, ctx, canvas);
+            }.bind(this)
+        );
+
+        canvas.addEventListener(
+            "mouseleave",
+            function(e) {
+                this.onMouseUp(e, ctx, canvas);
+            }.bind(this)
+        );
+    },
+
+    resetCanvas: function() {
+        this.data = new Array(400).fill(0);
+
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        this.drawGrid(ctx);
     }
 };
+```
